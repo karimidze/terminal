@@ -1,4 +1,5 @@
 var Terminal = (function() {
+	var message = "";
     var history = (localStorage.getItem("history") ? localStorage.getItem("history").split(",") : []),
         historyIndex = history.length;
         self = {};
@@ -18,6 +19,7 @@ var Terminal = (function() {
         terminal.appendChild(newPrompt);
         newPrompt.querySelector(".input").innerHTML = " ";
         newPrompt.querySelector(".input").focus();
+		autoprint(message);
     };
 
     var runCommand = function(terminal, cmd, args) {
@@ -106,6 +108,7 @@ var Terminal = (function() {
             }
 
             resetPrompt(elem, prompt);
+			window.glitch_exec.GLITCH_REFRESH_FRAMES_INTERVAL = paragraphCount++;
             event.preventDefault();
         });
 
