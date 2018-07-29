@@ -1,11 +1,24 @@
-@import url(//fonts.googleapis.com/css?family=VT323);
+
+
+/* body { */
+	/* background: black; */
+	/* color: white; */
+			
+	/* width:  100%; */
+	/* height: 100%; */
+			
+	/* padding: 0; */
+	/* margin:  0; */
+			
+	/* box-sizing: border-box; */
+/* } */
+
 
 /**
 * Terminal container.
 * Important note: The "VT323" font face comes from Google web fonts.
 */
 #terminal {
-    font-family: 'VT323', cursive;
     width:       100%; 
     height:      100%;
 }
@@ -25,4 +38,9 @@
 #terminal p {
     margin:     0;
     padding:    0;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+	cursor: default;
 }
