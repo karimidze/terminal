@@ -22,6 +22,8 @@ var Terminal = (function() {
 		if (window.Terminal.message != ""){
 			autoprint(window.Terminal.message);
 			window.Terminal.message = "";
+			updateHistory(prompt.textContent);
+			event.preventDefault();
 		}
     };
 
@@ -112,6 +114,8 @@ var Terminal = (function() {
 
             resetPrompt(elem, prompt);
 			window.glitch_exec.GLITCH_REFRESH_FRAMES_INTERVAL = paragraphCount++;
+			
+			
             event.preventDefault();
         });
 

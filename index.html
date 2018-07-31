@@ -3,42 +3,45 @@
 
 <head>
     <title>Terminal.js Demo</title>
-    <link rel="stylesheet" href="terminal.css">
-    <link rel="stylesheet" href="mainpage.css">
+    <link rel="stylesheet" href="CSS/mainpage.css">
+    <link rel="stylesheet" href="CSS/terminal.css">
+	<link rel="stylesheet" href="CSS/crt.css">
     <script src="jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="html2canvas.js"></script>
     <script type="text/javascript" src="glitch-lib.js"></script>
     <script type="text/javascript" src="glitch-execute.js"></script>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&amp;subset=cyrillic-ext" rel="stylesheet">
-
 </head>
 
 <body>
     <script type="text/javascript" src="terminal-loading.js"></script>
-    <div id="terminal">
-        <p>Type 'help' to get started.</p>
-        <p class="terminal-line">
-            <span class="prompt">guest@terminal.js&gt; </span>
-            <span contenteditable="true" type="text/html" id="curso" name="curso" class="input"> </span>
-        </p>
-    </div>
+    <script type="text/javascript">
+		window.onload = function() {
+        var gl = Object.create(glitch_exec);
+        gl.start(document.body);
+    }
+    var paragraphCount = 0;
+	window.addEventListener("click", function(event) {
+		var el = document.querySelector('#terminal');
+		var nodes = el.querySelectorAll("p > #curso");
+		var last = nodes[nodes.length- 1];
+		last.focus();
+	});
+	</script>
+	
+	<div id="terminal" class="crt">
+		<p>Type 'help' to get started.</p>
+		<p class="terminal-line">
+			<span class="prompt">guest@terminal.js&gt; </span>
+			<span contenteditable="true" type="text/html" id="curso" name="curso" class="input"> </span>
+		</p>
+	</div>
 	
     <script type="text/javascript" src="terminal.js"></script>
     <script type="text/javascript" src="terminal-cmds.js"></script>
     <script type="text/javascript">
-        window.onload = function() {
-            var gl = Object.create(glitch_exec);
-            gl.start(document.body);
-        }
-        var paragraphCount = 0;
-		window.addEventListener("click", function(event) {
-			var el = document.querySelector('#terminal');
-			var nodes = el.querySelectorAll("p > #curso");
-			var last = nodes[nodes.length- 1];
-			last.focus();
-		});
+
     </script>
 
 

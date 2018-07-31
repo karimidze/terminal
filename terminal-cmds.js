@@ -1,4 +1,4 @@
-	const event = new KeyboardEvent("keypress", {
+	const keypressEnter = new KeyboardEvent("keypress", {
 			  view: window,
 			  keyCode: 13,
 			  bubbles: true,
@@ -59,9 +59,9 @@
 		return "<div id=\"QRAscii\" style=\"line-height: 1em; letter-spacing: 0em; font-family: monospace; display: block;\">&nbsp;&nbsp;▀████&nbsp;▀&nbsp;▄▀█&nbsp;▀▀▄▀▄▀&nbsp;▀█▄▄██&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀&nbsp;▄▄&nbsp;▀▄▀&nbsp;&nbsp;█&nbsp;█▀&nbsp;▀▀█&nbsp;▀█▄▀&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀▀▀&nbsp;&nbsp;▀&nbsp;▄▀&nbsp;▄&nbsp;▄█▀█▀▀▀█&nbsp;▀█▀&nbsp;&nbsp;<br>&nbsp;&nbsp;█▀▀▀▀▀█&nbsp;▄▄█&nbsp;▀▄▀&nbsp;█&nbsp;▀&nbsp;█&nbsp;█&nbsp;▄&nbsp;&nbsp;<br>&nbsp;&nbsp;█&nbsp;███&nbsp;█&nbsp;&nbsp;█&nbsp;▀▄▀▄▀████▀▀▀█&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;█&nbsp;▀▀▀&nbsp;█&nbsp;███▄██▀▄▄&nbsp;▀&nbsp;&nbsp;▀&nbsp;▀▀&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀▀▀▀▀▀&nbsp;▀▀▀&nbsp;&nbsp;&nbsp;▀▀&nbsp;▀▀▀▀▀&nbsp;&nbsp;▀&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></div>";
 	}
 	commands.C = function(){
-		window.Terminal.message = "<div id=\"QRAscii\" style=\"line-height: 1em; letter-spacing: 0em; font-family: monospace; display: block;\">&nbsp;&nbsp;▀████&nbsp;▀&nbsp;▄▀█&nbsp;▀▀▄▀▄▀&nbsp;▀█▄▄██&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀&nbsp;▄▄&nbsp;▀▄▀&nbsp;&nbsp;█&nbsp;█▀&nbsp;▀▀█&nbsp;▀█▄▀&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀▀▀&nbsp;&nbsp;▀&nbsp;▄▀&nbsp;▄&nbsp;▄█▀█▀▀▀█&nbsp;▀█▀&nbsp;&nbsp;<br>&nbsp;&nbsp;█▀▀▀▀▀█&nbsp;▄▄█&nbsp;▀▄▀&nbsp;█&nbsp;▀&nbsp;█&nbsp;█&nbsp;▄&nbsp;&nbsp;<br>&nbsp;&nbsp;█&nbsp;███&nbsp;█&nbsp;&nbsp;█&nbsp;▀▄▀▄▀████▀▀▀█&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;█&nbsp;▀▀▀&nbsp;█&nbsp;███▄██▀▄▄&nbsp;▀&nbsp;&nbsp;▀&nbsp;▀▀&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀▀▀▀▀▀&nbsp;▀▀▀&nbsp;&nbsp;&nbsp;▀▀&nbsp;▀▀▀▀▀&nbsp;&nbsp;▀&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></div>";
+		window.Terminal.message = "<div><li><strong>help</strong> - display this help.</li></div>";
 		// autoprint(window.Terminal.message);
-		return "<a href=\"http://ya.ru\">Test</a>";
+		return "не всё то, <a href=\"http://ya.ru\">чем</a> кажется";
 	}
 	
 	commands.help = function() {

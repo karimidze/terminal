@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Press Start 2P'; /* Гарнитура шрифта */
+    src: url(../Assets/Fonts/PressStart2P-Regular.ttf); /* Путь к файлу со шрифтом */
+   }
+
 body {
 	background-color: black;
 	color: #fff;

@@ -1,23 +1,12 @@
 
-
-/* body { */
-	/* background: black; */
-	/* color: white; */
-			
-	/* width:  100%; */
-	/* height: 100%; */
-			
-	/* padding: 0; */
-	/* margin:  0; */
-			
-	/* box-sizing: border-box; */
-/* } */
-
-
 /**
 * Terminal container.
 * Important note: The "VT323" font face comes from Google web fonts.
 */
+.hidden {
+	display: none;
+}
+
 #terminal {
     width:       100%; 
     height:      100%;
@@ -32,7 +21,7 @@
     min-width:      1em;
     outline-color:  transparent;
     border:         none;
-    display:        inline-block;
+    /* display:        inline-block; */
 }
 
 #terminal p {
