@@ -19,7 +19,10 @@ var Terminal = (function() {
         terminal.appendChild(newPrompt);
         newPrompt.querySelector(".input").innerHTML = " ";
         newPrompt.querySelector(".input").focus();
-		autoprint(message);
+		if (window.Terminal.message != ""){
+			autoprint(window.Terminal.message);
+			window.Terminal.message = "";
+		}
     };
 
     var runCommand = function(terminal, cmd, args) {
@@ -68,9 +71,9 @@ var Terminal = (function() {
 
     // Terminal functions
 
-    self.init = function(elem, commands) {
+    self.init = function(elem, commands, message) {
         self.commands = commands;
-    
+		self.message = message;
         elem.addEventListener("keydown", function(event) {
             if(event.keyCode == KEY_TAB) {
                 var prompt = event.target;

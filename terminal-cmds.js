@@ -22,9 +22,10 @@
 			});  
 		}
 		typeText(text, 50, 0);
-		//last.dispatchEvent(event);
+		// last.dispatchEvent(event);
 	}
 
+	var message = "";
 	
     var commands = {};
 	  
@@ -58,7 +59,9 @@
 		return "<div id=\"QRAscii\" style=\"line-height: 1em; letter-spacing: 0em; font-family: monospace; display: block;\">&nbsp;&nbsp;▀████&nbsp;▀&nbsp;▄▀█&nbsp;▀▀▄▀▄▀&nbsp;▀█▄▄██&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀&nbsp;▄▄&nbsp;▀▄▀&nbsp;&nbsp;█&nbsp;█▀&nbsp;▀▀█&nbsp;▀█▄▀&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀▀▀&nbsp;&nbsp;▀&nbsp;▄▀&nbsp;▄&nbsp;▄█▀█▀▀▀█&nbsp;▀█▀&nbsp;&nbsp;<br>&nbsp;&nbsp;█▀▀▀▀▀█&nbsp;▄▄█&nbsp;▀▄▀&nbsp;█&nbsp;▀&nbsp;█&nbsp;█&nbsp;▄&nbsp;&nbsp;<br>&nbsp;&nbsp;█&nbsp;███&nbsp;█&nbsp;&nbsp;█&nbsp;▀▄▀▄▀████▀▀▀█&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;█&nbsp;▀▀▀&nbsp;█&nbsp;███▄██▀▄▄&nbsp;▀&nbsp;&nbsp;▀&nbsp;▀▀&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀▀▀▀▀▀&nbsp;▀▀▀&nbsp;&nbsp;&nbsp;▀▀&nbsp;▀▀▀▀▀&nbsp;&nbsp;▀&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></div>";
 	}
 	commands.C = function(){
-		return "<a href=\"http://ya.ru\">Test</a>"
+		window.Terminal.message = "<div id=\"QRAscii\" style=\"line-height: 1em; letter-spacing: 0em; font-family: monospace; display: block;\">&nbsp;&nbsp;▀████&nbsp;▀&nbsp;▄▀█&nbsp;▀▀▄▀▄▀&nbsp;▀█▄▄██&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀&nbsp;▄▄&nbsp;▀▄▀&nbsp;&nbsp;█&nbsp;█▀&nbsp;▀▀█&nbsp;▀█▄▀&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀▀▀&nbsp;&nbsp;▀&nbsp;▄▀&nbsp;▄&nbsp;▄█▀█▀▀▀█&nbsp;▀█▀&nbsp;&nbsp;<br>&nbsp;&nbsp;█▀▀▀▀▀█&nbsp;▄▄█&nbsp;▀▄▀&nbsp;█&nbsp;▀&nbsp;█&nbsp;█&nbsp;▄&nbsp;&nbsp;<br>&nbsp;&nbsp;█&nbsp;███&nbsp;█&nbsp;&nbsp;█&nbsp;▀▄▀▄▀████▀▀▀█&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;█&nbsp;▀▀▀&nbsp;█&nbsp;███▄██▀▄▄&nbsp;▀&nbsp;&nbsp;▀&nbsp;▀▀&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀▀▀▀▀▀&nbsp;▀▀▀&nbsp;&nbsp;&nbsp;▀▀&nbsp;▀▀▀▀▀&nbsp;&nbsp;▀&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></div>";
+		// autoprint(window.Terminal.message);
+		return "<a href=\"http://ya.ru\">Test</a>";
 	}
 	
 	commands.help = function() {
@@ -73,9 +76,9 @@
 	};
 	
 	commands.hello = function(args) {autoprint("<a href=\"http://ya.ru\">ADSDSDADSDA</a>");
-	if(args.length < 2) return "<p>Hello. Why don't you tell me your name?</p>";
-	return "Hello " + args[1];
+		if(args.length < 2) return "<p>Hello. Why don't you tell me your name?</p>";
+		return "Hello " + args[1];
 	};
 	
-	Terminal.init(document.getElementById("terminal"), commands);
+	Terminal.init(document.getElementById("terminal"), commands, message);
 	commands.help();
