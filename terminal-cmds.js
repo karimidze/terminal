@@ -6,7 +6,6 @@
 			});
 			
 	function autoprint(text){
-		
 		var el = document.querySelector('#terminal');
 		var nodes = el.querySelectorAll("p > #curso");
 		var last = nodes[nodes.length-1];
@@ -22,34 +21,76 @@
 			});  
 		}
 		typeText(text, 50, 0);
-		// last.dispatchEvent(event);
 	}
-
-	var message = "";
 	
     var commands = {};
 	  
 	commands.reg = function(args){
-		  var output = "<p>ur login: " + args[1] + "</p>" + "<p>ur pass: " + args[2] + "</p>";
-		  var test = "";
+		  var output = "";
 		  if (args[1]&&args[2])	{
-			return saveuser(args[1],args[2], test);
+			trySaveUser(args[1],args[2]);
+			return "";
 		  }
 		  else return "login/pass can't be empty";
 	}
-
-	function saveuser(login,password,test){
-		var jqXHR = $.ajax({
-			type: "POST",
-			url: "save_user.php",
-			data: {
-				'login': login,
-				'password':password
-			},
-			async: false
+	
+	function getSessionData(){
+		$.ajax({
+			url: "getSessionData.php",
+			type: "GET"
 		});
-		test = jqXHR.responseText;
-		return test;
+	}
+	
+	function returnResponse( responseData, login ) {
+		var el = document.querySelector('#terminal');
+		var nodes = el.querySelectorAll("p > #curso");
+		var last = nodes[nodes.length-1];
+		autoprint(responseData);
+		last.dispatchEvent(keypressEnter);
+		if (responseData == "Вы успешно вошли на сайт!"){
+			var el = document.querySelectorAll("#terminalUser");
+			el[el.length-1].innerHTML = ""+login+"@terminal.js&gt;";
+			el[el.length-1].style.color = "#ff3300";
+		}
+		// Do what you want with the data
+		console.log();
+	}
+
+	function trySaveUser(login, password){
+		$.ajax({
+			url: "save_user.php",
+			type: "POST",
+			data: {
+					'login': login,
+					'password':password
+			},
+			success: function ( data, status, XHR ) {
+				returnResponse(data);
+			}
+		});
+	}
+	
+	commands.login = function(args){
+		var output = "";
+		if (args[1]&&args[2]) {
+		login(args[1],args[2], output);
+		return "";
+		}
+	  else return "login/pass can't be empty";
+	}
+	
+	function login(login,password,output){
+		$.ajax({
+			url: "login.php",
+			type: "POST",
+			data: {
+					'login': login,
+					'password':password
+			},
+			success: function ( data, status, XHR ) {
+				returnResponse(data, login);
+			}
+		});
 	}
 	  
 	commands.A = function(){
@@ -59,8 +100,6 @@
 		return "<div id=\"QRAscii\" style=\"line-height: 1em; letter-spacing: 0em; font-family: monospace; display: block;\">&nbsp;&nbsp;▀████&nbsp;▀&nbsp;▄▀█&nbsp;▀▀▄▀▄▀&nbsp;▀█▄▄██&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀&nbsp;▄▄&nbsp;▀▄▀&nbsp;&nbsp;█&nbsp;█▀&nbsp;▀▀█&nbsp;▀█▄▀&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀▀▀&nbsp;&nbsp;▀&nbsp;▄▀&nbsp;▄&nbsp;▄█▀█▀▀▀█&nbsp;▀█▀&nbsp;&nbsp;<br>&nbsp;&nbsp;█▀▀▀▀▀█&nbsp;▄▄█&nbsp;▀▄▀&nbsp;█&nbsp;▀&nbsp;█&nbsp;█&nbsp;▄&nbsp;&nbsp;<br>&nbsp;&nbsp;█&nbsp;███&nbsp;█&nbsp;&nbsp;█&nbsp;▀▄▀▄▀████▀▀▀█&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;█&nbsp;▀▀▀&nbsp;█&nbsp;███▄██▀▄▄&nbsp;▀&nbsp;&nbsp;▀&nbsp;▀▀&nbsp;&nbsp;<br>&nbsp;&nbsp;▀▀▀▀▀▀▀&nbsp;▀▀▀&nbsp;&nbsp;&nbsp;▀▀&nbsp;▀▀▀▀▀&nbsp;&nbsp;▀&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br></div>";
 	}
 	commands.C = function(){
-		window.Terminal.message = "<div><li><strong>help</strong> - display this help.</li></div>";
-		// autoprint(window.Terminal.message);
 		return "не всё то, <a href=\"http://ya.ru\">чем</a> кажется";
 	}
 	
@@ -80,5 +119,5 @@
 		return "Hello " + args[1];
 	};
 	
-	Terminal.init(document.getElementById("terminal"), commands, message);
+	Terminal.init(document.getElementById("terminal"), commands);
 	commands.help();
